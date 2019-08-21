@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20190821005751) do
+ActiveRecord::Schema.define(version: 20190821014144) do
 
   create_table "children", force: :cascade do |t|
     t.string  "name"
@@ -21,6 +22,8 @@ ActiveRecord::Schema.define(version: 20190821005751) do
     t.string  "name"
     t.string  "definition"
     t.integer "cost"
+    t.integer "low_chance_damage"
+    t.integer "high_chance_damage"
     t.integer "damage"
   end
 
@@ -30,11 +33,14 @@ ActiveRecord::Schema.define(version: 20190821005751) do
     t.index [nil, nil], name: "index_events_users_on_events_id_and_users_id"
   end
 
+<<<<<<< HEAD
   create_table "user_events", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
   end
 
+=======
+>>>>>>> d55ef83ee91f318492bffad058ae67cd951c3d16
   create_table "users", force: :cascade do |t|
     t.string  "name"
     t.integer "phase"
