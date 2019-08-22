@@ -20,6 +20,7 @@ s(1)
 puts ""
 
 puts "What is your name?"
+$stdout.flush
 username = gets.chomp.to_s
 puts ""
 puts "Welcome to the world, #{username}!"
@@ -47,7 +48,7 @@ tension
 
     @dead = false
     # binding.pry
-    while new_user.phase < 7 do
+    while new_user.phase <= 6 do
         puts "Welcome to phase #{new_user.phase}!"
         s(2)
         new_user.age_range
@@ -60,17 +61,20 @@ tension
         Event.event_occurs(new_user)
         Event.event_choice(new_user)
         survived_phase(new_user)
+        new_user.save
         break if @dead == true
     end
     if @dead == true
         puts "Game over!"
         k = new_user.events.all
         k.each {|e| puts e.name}
-        puts "you were unable to survive #{k[-1]}"
+        puts "you were unable to survive #{k[-1].name}"
         User.delete(new_user.id)
     else
         puts "You have survived to age 50 and completed the game!"
         k = new_user.events.all
-        k.each {|e| puts e.name}
+        k.each {|e| puts "you survived #{e.name}"}
+        inhert_cash = new_user.resources / new_user.children.count
+        new_user.children.each {|child| user.create(name: child.name, resources: inhert_cash)}
         User.delete(new_user.id)
     end

@@ -2,30 +2,11 @@ class User < ActiveRecord::Base
     has_many :children
     has_many :eventusers
     has_many :events, :through => :eventusers
-    
-    
-    #method addsubresources
-    # def self.create_user(name, dificulty) #uniq usernames
-    #     case dificulty
-    #     when "1"
-    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(50..65), :resources => rand(1..3)})
-    #     when "2"
-    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(65..75), :resources => rand(4..15)})
-    #     when "3"
-    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(70..80), :resources => rand(16..31)})
-    #     when "4"
-    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(75..90), :resources => rand(32..500)})
-    #     else
-    #         "Please enter a valid command: 3, 2, or 1."
-    #     end
-    # end
     def status_report
-        #method status report puts welness and resources
         puts "Your wellness stat is #{self.wellness_score}."
         puts "You have $#{self.resources}."
     end
     def age_range
-        #method agerange creats age range from phase
         case self.phase
         when 1
             puts "You are between 0 and 5 years old."
@@ -42,7 +23,6 @@ class User < ActiveRecord::Base
         end
     end
     def add_sub_resources(difficulty)
-         #method addsubresources
         case difficulty
         when "1"
             hard_earnings = (rand(1..3))

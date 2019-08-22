@@ -22,8 +22,6 @@ class Event < ActiveRecord::Base
         groups_1_2_4_events << self.random_resource_damage
         groups_1_2_4_events
     end
-    ## END Group Events by Type ##
-    ## Get Random Event from Group ##
     def self.new_child
         self.group_have_child.sample
     end
@@ -39,7 +37,6 @@ class Event < ActiveRecord::Base
     def self.random_event_except_sick_kid
         self.group_all_but_sick_kid.sample
     end
-    ## END Get Random Event from Group ##
     def self.user_has_living_child?(user)
         if user.children.find_by alive: true == true
             true
@@ -47,12 +44,10 @@ class Event < ActiveRecord::Base
             false
         end
     end
-    ### END Helper Methods ###
-    # Get an event object based on phase #
     def self.event_occurs(user)
         if user.phase == 1
             @phase_event = self.random_user_illness
-        elsif user.phase.between?(2, 6) #=> true if 2-6
+        elsif user.phase.between?(2, 6)
             if Event.user_has_living_child?(user) == false
                 @phase_event = self.random_event_except_sick_kid
             else
@@ -61,7 +56,6 @@ class Event < ActiveRecord::Base
         else
             puts "Error: Phase is not within range."
         end
-        # @phase_event = self.random_resource_damage
     end
 
     def get_users_child(user)
@@ -77,24 +71,7 @@ class Event < ActiveRecord::Base
             child_name = gets.chomp
             child_object = child_name.downcase
             child_object = Child.create(name: child_name, alive: true, user_id: user.id)
-        elsif self.group_child_sick.include?(@phase_event)
-            puts @phase_event.definition
-            s(1)
-            puts "You may purchase medicine for $#{@phase_event.cost}."
-            s(1)
-            puts "You currently have $#{user.resources}."
-            s(1)
-            puts "Without medicine, your child is #{@phase_event.high_chance_damage}% likely to survive."
-            s(1)
-            puts "With medicine, your child is #{@phase_event.low_chance_damage}% likely to survive."
-            s(1)
-            puts "Would you like to purchase the medicine?"
-            s(1)
-            puts "Type Y for Yes or N for No"
-            user_response = gets.chomp
-            user_response = user_response.downcase!
-            @phase_event.choice(user_response, user)
-        elsif self.group_user_sick.include?(@phase_event)
+        elsif self.group_user_sick.include?(@phase_event) || self.group_child_sick.include?(@phase_event)
             puts @phase_event.definition
             s(1)
             puts "You may purchase medicine for $#{@phase_event.cost}."
@@ -123,7 +100,6 @@ class Event < ActiveRecord::Base
             puts "Your event object can't be found; broken within Event class method event_choice."
         end
     end
-
     def resource_choice(user)
         @users_choice = ""
         
