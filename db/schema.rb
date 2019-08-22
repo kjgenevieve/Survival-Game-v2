@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190821005751) do
-ActiveRecord::Schema.define(version: 20190821014144) do
+ActiveRecord::Schema.define(version: 20190822214806) do
 
   create_table "children", force: :cascade do |t|
     t.string  "name"
     t.boolean "alive"
+    t.integer "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20190821014144) do
     t.integer "low_chance_damage"
     t.integer "high_chance_damage"
     t.integer "damage"
+    t.string  "event_type"
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
@@ -33,19 +34,23 @@ ActiveRecord::Schema.define(version: 20190821014144) do
     t.index [nil, nil], name: "index_events_users_on_events_id_and_users_id"
   end
 
-<<<<<<< HEAD
+  create_table "eventusers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_eventusers_on_event_id"
+    t.index ["user_id"], name: "index_eventusers_on_user_id"
+  end
+
   create_table "user_events", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
   end
 
-=======
->>>>>>> d55ef83ee91f318492bffad058ae67cd951c3d16
   create_table "users", force: :cascade do |t|
     t.string  "name"
-    t.integer "phase"
-    t.integer "wellness_score"
-    t.integer "resources"
+    t.integer "phase",          default: 1
+    t.integer "wellness_score", default: 65
+    t.integer "resources",      default: 0
   end
 
 end
