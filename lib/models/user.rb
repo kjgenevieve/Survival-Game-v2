@@ -5,20 +5,20 @@ class User < ActiveRecord::Base
     
     
     #method addsubresources
-    def self.create_user(name, dificulty) #uniq usernames
-        case dificulty
-        when "1"
-            new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(50..65), :resources => rand(1..3)})
-        when "2"
-            new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(65..75), :resources => rand(4..15)})
-        when "3"
-            new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(70..80), :resources => rand(16..31)})
-        when "4"
-            new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(75..90), :resources => rand(32..500)})
-        else
-            "Please enter a valid command: 3, 2, or 1."
-        end
-    end
+    # def self.create_user(name, dificulty) #uniq usernames
+    #     case dificulty
+    #     when "1"
+    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(50..65), :resources => rand(1..3)})
+    #     when "2"
+    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(65..75), :resources => rand(4..15)})
+    #     when "3"
+    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(70..80), :resources => rand(16..31)})
+    #     when "4"
+    #         new_user = User.create({:phase => 1, :name => name, :wellness_score => rand(75..90), :resources => rand(32..500)})
+    #     else
+    #         "Please enter a valid command: 3, 2, or 1."
+    #     end
+    # end
     def status_report
         #method status report puts welness and resources
         puts "Your wellness stat is #{self.wellness_score}."

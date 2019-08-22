@@ -23,25 +23,25 @@ puts "What is your name?"
 username = gets.chomp.to_s
 puts ""
 puts "Welcome to the world, #{username}!"
-new_user = User.create_user(username, difficulty) #take out username crzy characters
+new_user = User.find_or_create_by(name: username) #take out username crzy characters
 s(1)
 
-# print "The world has four income levels, and you are born into a country on Level 1. "
-# s(1)
-# print "About 1 billion of your fellow humans live on this level; "
-# s(1)
-# print "that's 9% of the world's population."
-# s(1)
-# print "(While that's still too many people struggling, that's a huge improvement: "
-# s(1)
-# puts "in 1966, 50% of the world was on Level 1.) "
-# s(1)
-# puts ""
-# print "Most people in your country survive on under $2 a day. "
-# s(1)
-# print "As a child, you will walk barefoot to a mudhole to collect water for your family using your single plastic bucket. "
-# s(1)
-# puts "On your way home you'll gather firewood to heat the gray porridge that you eat at every meal. "
+print "The world has four income levels, and you are born into a country on Level 1. "
+s(2.5)
+print "About 1 billion of your fellow humans live on this level; "
+s(2.5)
+print "that's 9% of the world's population."
+s(2.5)
+print "(While that's still too many people struggling, that's a huge improvement: "
+s(2.5)
+puts "in 1966, 50% of the world was on Level 1.) "
+s(2.5)
+puts ""
+print "Most people in your country survive on under $2 a day. "
+s(2.5)
+print "As a child, you will walk barefoot to a mudhole to collect water for your family using your single plastic bucket. "
+s(2.5)
+puts "On your way home you'll gather firewood to heat the gray porridge that you eat at every meal. "
 
 tension
 
@@ -54,7 +54,6 @@ tension
         s(2)
         new_user.status_report
         s(2)
-        do_you_want_to_continue if new_user.phase >= 2
         break if @dead == true
         new_user.add_sub_resources(difficulty)
         s(1)
@@ -65,8 +64,13 @@ tension
     end
     if @dead == true
         puts "Game over!"
+        k = new_user.events.all
+        k.each {|e| puts e.name}
+        puts "you were unable to survive #{k[-1]}"
+        User.delete(new_user.id)
     else
         puts "You have survived to age 50 and completed the game!"
+        k = new_user.events.all
+        k.each {|e| puts e.name}
+        User.delete(new_user.id)
     end
-    k = new_user.events.all
-    k.each {|e| puts e.name}

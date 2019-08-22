@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190821223901) do
+ActiveRecord::Schema.define(version: 20190822205133) do
 
   create_table "children", force: :cascade do |t|
     t.string  "name"
@@ -41,11 +41,16 @@ ActiveRecord::Schema.define(version: 20190821223901) do
     t.index ["user_id"], name: "index_eventusers_on_user_id"
   end
 
+  create_table "user_events", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string  "name"
     t.integer "phase"
-    t.integer "wellness_score"
-    t.integer "resources"
+    t.integer "wellness_score", default: 65
+    t.integer "resources",      default: 0
   end
 
 end
