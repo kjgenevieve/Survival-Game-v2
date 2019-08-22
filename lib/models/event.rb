@@ -47,14 +47,12 @@ class Event < ActiveRecord::Base
     def self.event_occurs(user)
         if user.phase == 1
             @phase_event = self.random_user_illness
-        elsif user.phase.between?(2, 6)
-            if Event.user_has_living_child?(user) == false
+        elsif Event.user_has_living_child?(user) == false
                 @phase_event = self.random_event_except_sick_kid
-            else
-                @phase_event = Event.all.sample
-            end
         else
-            puts "Error: Phase is not within range."
+                @phase_event = Event.all.sample
+        # else
+        #     puts "Error: Phase is not within range."
         end
     end
 
@@ -97,6 +95,7 @@ class Event < ActiveRecord::Base
             s(1)
             @phase_event.resource_choice(user)
         else
+            binding.pry
             puts "Your event object can't be found; broken within Event class method event_choice."
         end
     end
@@ -153,7 +152,7 @@ class Event < ActiveRecord::Base
                 puts "Your wellness dropped by #{self.damage}."
                 user.wellness_score -= self.damage
                 puts "Your wellness stat is now #{user.wellness_score}."
-                user.save
+                # user.save
             end
 
         end
