@@ -30,15 +30,15 @@
         # Malaria
             # 43%
             # 13%
-            child_malaria = Event.create(:name => "malaria", :definition => "You've contracted malaria.", :cost => 1, :low_chance_damage => 13, :high_chance_damage => 43, :damage => nil, :event_type => "child sick")
+            child_malaria = Event.create(:name => "malaria", :definition => "You've contracted malaria.", :cost => 1, :low_chance_damage => 13, :high_chance_damage => 43, :damage => 10, :event_type => "child sick")
         # Injury
             # 50%
             # 14%
-            child_injury = Event.create(:name => "injury", :definition => "Your child has been injured.", :cost => 2, :low_chance_damage => 14, :high_chance_damage => 50, :damage => nil, :event_type => "child sick")
+            child_injury = Event.create(:name => "injury", :definition => "Your child has been injured.", :cost => 2, :low_chance_damage => 14, :high_chance_damage => 50, :damage => 10, :event_type => "child sick")
         # Other infection
             # 80%
             # 10%
-            child_infection = Event.create(:name => "infection", :definition => "Your child has an infection.", :cost => 1, :low_chance_damage => 10, :high_chance_damage => 80, :damage => nil, :event_type => "child sick")
+            child_infection = Event.create(:name => "infection", :definition => "Your child has an infection.", :cost => 1, :low_chance_damage => 10, :high_chance_damage => 80, :damage => 10, :event_type => "child sick")
   # group 4:
     # Resource damage
         # Famine

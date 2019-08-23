@@ -8,7 +8,7 @@ require_relative '../config/environment'
 # puts "ARE YOU READY TO BE BORN?"
 # puts ""
 # s(1)
-
+system 'clear'
 puts "How easy will your life be?"
 s(1)
 difficulty = dificulty_check
