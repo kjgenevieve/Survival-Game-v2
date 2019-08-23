@@ -30,11 +30,7 @@
         # Malaria
             # 43%
             # 13%
-<<<<<<< HEAD
-            child_malaria = Event.create(:name => "malaria", :definition => "You've contracted malaria.", :cost => 1, :low_chance_damage => 13, :high_chance_damage => 43, :damage => 10, :event_type => "child sick")
-=======
             child_malaria = Event.create(:name => "malaria", :definition => "Your child has contracted malaria.", :cost => 1, :low_chance_damage => 13, :high_chance_damage => 43, :damage => nil, :event_type => "child sick")
->>>>>>> genevieve_updates
         # Injury
             # 50%
             # 14%
@@ -42,23 +38,6 @@
         # Other infection
             # 80%
             # 10%
-<<<<<<< HEAD
-            child_infection = Event.create(:name => "infection", :definition => "Your child has an infection.", :cost => 1, :low_chance_damage => 10, :high_chance_damage => 80, :damage => 10, :event_type => "child sick")
-  # group 4:
-    # Resource damage
-        # Famine
-            # 100%
-            # 100%
-            famine = Event.create(:name => "famine", :definition => "There's a famine that has damaged your crops; you'll need to purchase food.", :cost => 2, :low_chance_damage => 100, :high_chance_damage => 100, :damage => nil, :event_type => "resource damage")
-        # Drought
-            # 100%
-            # 100%
-            drought = Event.create(:name => "drought", :definition => "There's a drought that has dried out your well; you'll need to purchase water.", :cost => 3, :low_chance_damage => 100, :high_chance_damage => 100, :damage => nil, :event_type => "resource damage")
-        # Home Repairs
-            # 100%
-            # 100%
-            home_repairs = Event.create(:name => "home repair costs", :definition => "A tree fell on your house; you'll need to repair it.", :cost => 1, :low_chance_damage => 100, :high_chance_damage => 100, :damage => nil, :event_type => "resource damage")
-=======
             child_infection = Event.create(:name => "infection", :definition => "Your child has an infection.", :cost => 1, :low_chance_damage => 10, :high_chance_damage => 80, :damage => nil, :event_type => "child sick")
 #   # group 4:
 #     # Resource damage
@@ -74,7 +53,6 @@
 #             # 100%
 #             # 100%
 #             home_repairs = Event.create(:name => "home repair costs", :definition => "A tree fell on your house; you'll need to repair it.", :cost => 1, :low_chance_damage => 100, :high_chance_damage => 100, :damage => nil, :event_type => "resource damage")
->>>>>>> genevieve_updates
 
 
 

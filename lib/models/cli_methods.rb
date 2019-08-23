@@ -10,7 +10,6 @@ def gets_dificulty
     puts "Select 1 for hard."
     puts "Select 2 for average."
     puts "Select 3 for easy."
-    system 'stdout.flush'
     d = gets.chomp
     d.to_s
 end
@@ -29,7 +28,7 @@ def survived_phase(user)
     else 
         puts "You have survived phase #{user.phase}." 
         user.phase += 1
-        tension
+        # tension
     end
 end
 

@@ -114,50 +114,50 @@ class Event < ActiveRecord::Base
         choose = @users_choice
         if choose == "y" && user.resources > self.cost
             puts "You are in events.rb > def choice (line 140), if choose == 'y' && user.resources > self.cost."
-            # user.resources -= self.cost
-            # user.save
-            # if rand(100) >= self.low_chance_damage
-            #     puts "You were not affected by #{self.name}."
-            # else
-            #     puts "You were affected by #{self.name}."
-            #     puts "Your wellness dropped by #{self.damage}."
-            #     user.wellness_score -= self.damage
-            #     puts "Your wellness stat is now #{user.wellness_score}."
-            #     user.save
-            # end
+            user.resources -= self.cost
+            user.save
+            if rand(100) >= self.low_chance_damage
+                puts "You were not affected by #{self.name}."
+            else
+                puts "You were affected by #{self.name}."
+                puts "Your wellness dropped by #{self.damage}."
+                user.wellness_score -= self.damage
+                puts "Your wellness stat is now #{user.wellness_score}."
+                user.save
+            end
         elsif choose == "y" && user.resources > self.cost && self.group_child_sick.include?(@phase_event)
             "You are in events.rb > def choice (line 140), elsif choose == 'y' && user.resources > self.cost && self.group_child_sick.include?(@phase_event)"
-            # user.resources -= self.cost
-            # user.save
-            # if rand(100) >= self.low_chance_damage
-            #     puts "Your child survived #{self.name}!"
-            # else
-            #     puts "Your child was greatly affected by #{self.name} and has died."
-            #     get_users_child(user).alive = false
-            #     user.save
-            #     get_users_child(user).save
-            # end
+            user.resources -= self.cost
+            user.save
+            if rand(100) >= self.low_chance_damage
+                puts "Your child survived #{self.name}!"
+            else
+                puts "Your child was greatly affected by #{self.name} and has died."
+                get_users_child(user).alive = false
+                user.save
+                get_users_child(user).save
+            end
         elsif choose == "n" && self.group_child_sick.include?(@phase_event)
             "You are in events.rb > def choice (line 140),elsif choose == 'n' && self.group_child_sick.include?(@phase_event)"
-            # if rand(100) >= self.high_chance_damage
-            #     puts "Your child survived #{self.name}!"
-            # else
-            #     puts "Your child was greatly affected by #{self.name} and has died."
-            #     get_users_child(user).alive = false
-            #     user.save
-            #     get_users_child(user).save
-            # end
+            if rand(100) >= self.high_chance_damage
+                puts "Your child survived #{self.name}!"
+            else
+                puts "Your child was greatly affected by #{self.name} and has died."
+                get_users_child(user).alive = false
+                user.save
+                get_users_child(user).save
+            end
         else
             "You are in events.rb > def choice (line 140), else."
-            # if rand(100) >= self.high_chance_damage
-            #     puts "You were not affected by #{self.name}."
-            # else
-            #     puts "You were affected by #{self.name}."
-            #     puts "Your wellness dropped by #{self.damage}."
-            #     user.wellness_score -= self.damage
-            #     puts "Your wellness stat is now #{user.wellness_score}."
-            #     user.save
-            # end
+            if rand(100) >= self.high_chance_damage
+                puts "You were not affected by #{self.name}."
+            else
+                puts "You were affected by #{self.name}."
+                puts "Your wellness dropped by #{self.damage}."
+                user.wellness_score -= self.damage
+                puts "Your wellness stat is now #{user.wellness_score}."
+                user.save
+            end
         end
     end
 end

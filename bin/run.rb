@@ -1,11 +1,5 @@
 require_relative '../config/environment'
 
-<<<<<<< HEAD
-# puts "Welcome to the Survival Game!"
-# puts "Created by Jared Burnam and Genevieve McAllister"
-# puts "Based on the book Factfulness by Hans Rosling."
-# puts ""
-=======
 puts "Welcome to the Survival Game!"
 puts "Created by Jared Burnam and Genevieve McAllister"
 puts "Based on the book Factfulness by Hans Rosling."
@@ -14,12 +8,7 @@ puts ""
 puts "ARE YOU READY TO BE BORN?"
 puts ""
 # s(1)
->>>>>>> genevieve_updates
-
-# puts "ARE YOU READY TO BE BORN?"
-# puts ""
-# s(1)
-system 'clear'
+# system 'clear'
 puts "How easy will your life be?"
 # s(1)
 difficulty = dificulty_check
@@ -35,13 +24,8 @@ $stdout.flush
 username = gets.chomp.to_s
 puts ""
 puts "Welcome to the world, #{username}!"
-<<<<<<< HEAD
 new_user = User.find_or_create_by(name: username) #take out username crzy characters
-s(1)
-=======
-new_user = User.create_user(username, difficulty) #take out username crzy characters
 # s(1)
->>>>>>> genevieve_updates
 
 # print "The world has four income levels, and you are born into a country on Level 1. "
 # s(2.5)
@@ -70,12 +54,8 @@ new_user = User.create_user(username, difficulty) #take out username crzy charac
         new_user.age_range
         # s(2)
         new_user.status_report
-<<<<<<< HEAD
-        s(2)
-=======
         # s(2)
         do_you_want_to_continue if new_user.phase >= 2
->>>>>>> genevieve_updates
         break if @dead == true
         new_user.add_sub_resources(difficulty)
         # s(1)
